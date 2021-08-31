@@ -1,5 +1,7 @@
 from turtle import Turtle, Screen
 from paddle import Paddle
+from ball import Ball
+import time
 
 PADDLE_POSITION = 350, 0
 
@@ -31,6 +33,8 @@ while True:
 
 paddle_r = Paddle(350,0)
 paddle_l = Paddle(-350,0)
+ball = Ball()
+
 
 
 # paddle = Turtle(shape="square")
@@ -63,6 +67,10 @@ screen.onkey(fun=paddle_l.down, key="s")
 
 game_is_on = True
 while game_is_on:
+    time.sleep(0.1)
     screen.update()
+    # ball.speed('slowest')
+    ball.refresh()
+
 
 screen.exitonclick()

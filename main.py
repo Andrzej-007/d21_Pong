@@ -69,8 +69,14 @@ game_is_on = True
 while game_is_on:
     time.sleep(0.1)
     screen.update()
-    # ball.speed('slowest')
-    ball.refresh()
+    ball.ball_move()
+
+    if paddle_r.distance(ball) < 40:
+        ball.bounce_from_paddle()
+    if paddle_l.distance(ball) < 40:
+        ball.bounce_from_paddle()
+
+    # if snake.first_square.distance(food) < 15:
 
 
 screen.exitonclick()

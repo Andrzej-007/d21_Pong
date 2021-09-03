@@ -37,28 +37,6 @@ ball = Ball()
 
 
 
-# paddle = Turtle(shape="square")
-# paddle.penup()
-# paddle.color("white")
-# paddle.turtlesize(stretch_wid=5, stretch_len=1, outline=None)
-# paddle.goto(x=350, y=0)
-
-# def up():
-#     global PADDLE_POSITION
-#     pos_x = PADDLE_POSITION[0]
-#     pos_y = PADDLE_POSITION[1] + 20
-#     PADDLE_POSITION = pos_x, pos_y
-#     paddle.setpos(PADDLE_POSITION)
-#
-#
-# def down():
-#     global PADDLE_POSITION
-#     pos_x = PADDLE_POSITION[0]
-#     pos_y = PADDLE_POSITION[1] - 20
-#     PADDLE_POSITION = pos_x, pos_y
-#     paddle.setpos(PADDLE_POSITION)
-
-
 screen.listen()
 screen.onkey(fun=paddle_r.up, key="Up")
 screen.onkey(fun=paddle_r.down, key="Down")
@@ -70,13 +48,13 @@ while game_is_on:
     time.sleep(0.1)
     screen.update()
     ball.ball_move()
-
-    if paddle_r.distance(ball) < 40:
+    if ball.distance(paddle_r) < 40 and ball.xcor() > 330:
         ball.bounce_from_paddle()
-    if paddle_l.distance(ball) < 40:
+    if paddle_l.distance(ball) < 40 and  ball.xcor() < -330:
         ball.bounce_from_paddle()
 
-    # if snake.first_square.distance(food) < 15:
+    if ball.xcor() > 380 or ball.xcor() < -380 :
+        ball.reset_ball_position()
 
 
 screen.exitonclick()

@@ -21,8 +21,8 @@ class Ball(Turtle):
         y_ball_pos = self.ycor() + self.y_ball
         self.goto(x_ball_pos, y=y_ball_pos)
 
-        if y_ball_pos > 280 or y_ball_pos < -270:
-            self.y_ball *= -1
+    def ball_wall_bounce(self):
+        self.y_ball *= -1
 
 
     def bounce_from_paddle(self):

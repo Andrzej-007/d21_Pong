@@ -1,6 +1,7 @@
 from turtle import Turtle, Screen
 from paddle import Paddle
 from ball import Ball
+from scoreboard import Scoreboard
 import time
 
 PADDLE_POSITION = 350, 0
@@ -34,6 +35,7 @@ while True:
 paddle_r = Paddle(350,0)
 paddle_l = Paddle(-350,0)
 ball = Ball()
+scoreboard = Scoreboard()
 
 
 
@@ -48,13 +50,27 @@ while game_is_on:
     time.sleep(0.1)
     screen.update()
     ball.ball_move()
-    if ball.distance(paddle_r) < 40 and ball.xcor() > 330:
+
+    # ball bounce form wall
+    if ball.ycor() > 280 or ball.ycor() < -270:
+        ball.ball_wall_bounce()
+
+    # ball bounce form paddles
+    if ball.distance(paddle_r) < 50 and ball.xcor() > 330:
         ball.bounce_from_paddle()
-    if paddle_l.distance(ball) < 40 and  ball.xcor() < -330:
+    if paddle_l.distance(ball) < 50 and  ball.xcor() < -330:
         ball.bounce_from_paddle()
 
-    if ball.xcor() > 380 or ball.xcor() < -380 :
+    # detect  R scoure and reset position
+    if ball.xcor() > 380 :
         ball.reset_ball_position()
+        scoreboard.increas_point('r')
+
+    # detect  R scoure and reset position
+    if ball.xcor() < -380 :
+        ball.reset_ball_position()
+        scoreboard.increas_point('l')
+
 
 
 screen.exitonclick()

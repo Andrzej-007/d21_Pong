@@ -40,14 +40,17 @@ scoreboard = Scoreboard()
 
 
 screen.listen()
-screen.onkey(fun=paddle_r.up, key="Up")
-screen.onkey(fun=paddle_r.down, key="Down")
-screen.onkey(fun=paddle_l.up, key="w")
-screen.onkey(fun=paddle_l.down, key="s")
+screen.onkeypress(fun=paddle_r.up, key="Up")
+screen.onkeypress(fun=paddle_r.down, key="Down")
+screen.onkeypress(fun=paddle_l.up, key="e")
+screen.onkeypress(fun=paddle_l.down, key="s")
+
 
 game_is_on = True
 while game_is_on:
-    time.sleep(0.1)
+
+
+    time.sleep(ball.ball_speed)
     screen.update()
     ball.ball_move()
 
@@ -55,9 +58,11 @@ while game_is_on:
     if ball.ycor() > 280 or ball.ycor() < -270:
         ball.ball_wall_bounce()
 
+
     # ball bounce form paddles
     if ball.distance(paddle_r) < 50 and ball.xcor() > 330:
         ball.bounce_from_paddle()
+
     if paddle_l.distance(ball) < 50 and  ball.xcor() < -330:
         ball.bounce_from_paddle()
 
@@ -70,7 +75,6 @@ while game_is_on:
     if ball.xcor() < -380 :
         ball.reset_ball_position()
         scoreboard.increas_point('l')
-
 
 
 screen.exitonclick()

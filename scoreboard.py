@@ -1,13 +1,8 @@
 
-
 from turtle import Turtle
-
-
 
 ALIGMENT = 'center'
 FONT = ("Courier", 70 , "normal")
-
-
 
 class Scoreboard(Turtle):
 
@@ -31,7 +26,6 @@ class Scoreboard(Turtle):
     def increas_point(self, point):
         if point == 'l':
             self.score_r += 1
-
         elif point == 'r':
             self.score_l += 1
 

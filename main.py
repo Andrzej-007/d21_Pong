@@ -12,7 +12,7 @@ screen.bgcolor('green')
 screen.title(titlestring="Pang Game")
 screen.tracer(0)
 
-
+# cross line in the middle
 middle_line = Turtle(shape="square")
 middle_line.hideturtle()
 middle_line.speed("fastest")
@@ -38,13 +38,11 @@ ball = Ball()
 scoreboard = Scoreboard()
 
 
-
 screen.listen()
 screen.onkeypress(fun=paddle_r.up, key="Up")
 screen.onkeypress(fun=paddle_r.down, key="Down")
-screen.onkeypress(fun=paddle_l.up, key="e")
+screen.onkeypress(fun=paddle_l.up, key="w")
 screen.onkeypress(fun=paddle_l.down, key="s")
-
 
 game_is_on = True
 while game_is_on:
@@ -57,7 +55,6 @@ while game_is_on:
     # ball bounce form wall
     if ball.ycor() > 280 or ball.ycor() < -270:
         ball.ball_wall_bounce()
-
 
     # ball bounce form paddles
     if ball.distance(paddle_r) < 50 and ball.xcor() > 330:

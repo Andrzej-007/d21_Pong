@@ -4,6 +4,8 @@ from ball import Ball
 from scoreboard import Scoreboard
 import time
 
+#  new change 08-02-2022
+
 PADDLE_POSITION = 350, 0
 
 screen = Screen()
